@@ -1,0 +1,79 @@
+﻿@page
+@model CreatorModel
+@{
+    ViewBag.Title = "Home page";
+}
+
+<div class="row overflow-auto" style="height: 75vh;">
+    <div class="col-md-2">
+        <div class="btn-group-vertical">
+            @foreach (var button in Model.MenuButtons)
+            {
+            <button type="button" class="btn btn-success" @(button.IsDisabled ? "disabled" : "") onclick="switchView('@button.ButtonText')" data-toggle="tooltip" data-placement="bottom" title="@button.ToolTip">@button.ButtonText</button>
+            }
+            <br />
+            <form method="post">
+                @foreach (var auth in Model.AuthMethods)
+                {
+                <input type="radio" asp-for="Authentication" value="@auth" />@auth<br />
+                }
+                <input type="submit" />
+            </form>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div id="customer" style="display: none;">
+            <div class="text-danger">* Form is for illustrative purposes only. Clicking Submit performs no action. *</div>
+            <form method="post">
+                Email Address: <input type="email" name="emailaddress"><br />
+                Name: <input type="text" name="name"><br />
+                <input type="submit" />
+            </form>
+        </div>
+        <div id="asset" style="display: none;">
+            <div class="text-danger">* Form is for illustrative purposes only. Clicking Submit performs no action. *</div>
+            <form method="post">
+                From: <input type="text" name="from"><br />
+                Amount: <input type="text" name="amount"><br />
+                <input type="submit" />
+            </form>
+        </div>
+        <div id="liability" style="display: none;">
+            <div class="text-danger">* Form is for illustrative purposes only. Clicking Submit performs no action. *</div>
+            <form method="post">
+                To: <input type="text" name="to"><br />
+                Amount: <input type="text" name="amount"><br />
+                <input type="submit" />
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+        function switchView(visible) {
+            switch(visible) {
+                case "Customer":
+                    $('#liability').hide();
+                    $('#asset').hide();
+                    $('#customer').show();
+                    break;
+                case "Asset":
+                    $('#liability').hide();
+                    $('#customer').hide();
+                    $('#asset').show();
+                    break;
+                case "Liability":
+                    $('#customer').hide();
+                    $('#asset').hide();
+                    $('#liability').show();
+                    break;
+                default:
+                    $('#customer').hide();
+                    $('#asset').hide();
+                    $('#liability').hide();
+            }
+        };
+    </script>
+}
+

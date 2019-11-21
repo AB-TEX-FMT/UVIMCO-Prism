@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+@{
+    ViewBag.Title = "Prism";
+}
+
+<H1 class="text-center">Welcome</H1>
+<h5 class="text-center">Please choose an item on the menu above</h5>
+<br />
+<hr />
+<br />
+
+R is a statistcal analysis query language and Shiny basically creates a hosted app for R queries. As such,
+it doesn't have a very robust menu system and no authentication/authorization methods. I would suggest 
+that we wrap the R/Shiny apps in an ASP framework similar to this for several reasons.
+<ul>
+    <li>It will provide the ability to add authentication/authorization in the future</li>
+    <li>Customer can develop as many Shiny apps as they like and no code changes to this app will be necessary</li>
+    <li>Display for this app is DB driven with Menu buttons linked to Text and URLs fields in a table</li>
+    <li>Input into the DB can be facilitated through a user friendly interface which implements error checking/validation</li>
+    <li>Rendering the Shiny projects as widgets will give us a lot of options as to what we can display in the content window. 
+        It doesn't tie us to the R/Shiny widgets as we could also swap out our own table widgets for any auth admin in the future.</li>
+</ul>
+
+
