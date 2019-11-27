@@ -47,7 +47,6 @@ namespace DataService.Services
                 return new ApplicationUserListDTOModel
                 {
                     ErrorMessage =  e.Message,
-                    HasError = true,
                 };
             }
         }
@@ -75,7 +74,6 @@ namespace DataService.Services
                 return new ApplicationUserDTOModel
                 {
                     ErrorMessage =  e.Message,
-                    HasError = true,
                 };
             }
         }
@@ -103,7 +101,6 @@ namespace DataService.Services
                 return new ApplicationUserDTOModel
                 {
                     ErrorMessage =  e.Message,
-                    HasError = true,
                     Item = new ApplicationUser()
                 };
             }
@@ -132,7 +129,6 @@ namespace DataService.Services
                 return new ApplicationUserDTOModel
                 {
                     ErrorMessage =  e.Message,
-                    HasError = true,
                 };
             }
         }
@@ -160,7 +156,6 @@ namespace DataService.Services
                 return new ApplicationUserDTOModel
                 {
                     ErrorMessage =  e.Message,
-                    HasError = true,
                 };
             }
         }
@@ -188,7 +183,6 @@ namespace DataService.Services
                 return new ApplicationUserDTOModel
                 {
                     ErrorMessage =  e.Message,
-                    HasError = true,
                 };
             }
         }
@@ -216,7 +210,6 @@ namespace DataService.Services
                 return new ApplicationRoleDTOModel
                 {
                     ErrorMessage = e.Message,
-                    HasError = true,
                 };
             }
         }
@@ -245,7 +238,6 @@ namespace DataService.Services
                 return new ApplicationRolesDTOModel
                 {
                     ErrorMessage = e.Message,
-                    HasError = true,
                 };
             }
         }
@@ -274,7 +266,6 @@ namespace DataService.Services
                 return new ApplicationRolesDTOModel
                 {
                     ErrorMessage = e.Message,
-                    HasError = true,
                 };
             }
         }
@@ -301,7 +292,6 @@ namespace DataService.Services
                 return new ApplicationRolesDTOModel
                 {
                     ErrorMessage = e.Message,
-                    HasError = true,
                 };
             }
         }
@@ -327,7 +317,6 @@ namespace DataService.Services
             {
                 return new ApplicationRoleDTOModel()
                 {
-                    HasError = true,
                     ErrorMessage = e.Message,
                 };
             }
@@ -356,7 +345,6 @@ namespace DataService.Services
                 return new ApplicationRoleDTOModel
                 {
                     ErrorMessage = e.Message,
-                    HasError = true,
                 };
             }
         }
@@ -383,7 +371,6 @@ namespace DataService.Services
                 return new ApplicationRoleDTOModel
                 {
                     ErrorMessage =  e.Message,
-                    HasError = true,
                 };
             };
         }
@@ -410,7 +397,6 @@ namespace DataService.Services
                 return new ApplicationRoleDTOModel
                 {
                     ErrorMessage = e.Message,
-                    HasError = true,
                 };
             }
         }
@@ -439,7 +425,6 @@ namespace DataService.Services
                 return new ApplicationUserClaimsDTOModel
                 {
                     ErrorMessage = e.Message,
-                    HasError = true,
                 };
             }
         }
@@ -466,7 +451,6 @@ namespace DataService.Services
                 return new ApplicationRoleClaimsDTOModel
                 {
                     ErrorMessage = e.Message,
-                    HasError = true,
                 };
             }
         }
@@ -494,7 +478,6 @@ namespace DataService.Services
                 return new ApplicationClaimsDTOModel
                 {
                     ErrorMessage = e.Message,
-                    HasError = true,
                 };
             }
         }
@@ -523,7 +506,6 @@ namespace DataService.Services
                 return new ApplicationClaimsDTOModel
                 {
                     ErrorMessage = e.Message,
-                    HasError = true,
                 };
             }
         }

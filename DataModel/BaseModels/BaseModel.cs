@@ -10,7 +10,15 @@
         /// <summary>
         /// True/False that determines whether there is an error message
         /// </summary>
-        public virtual bool HasError { get; set; }
+        public virtual bool HasError {
+            get { 
+                if (!string.IsNullOrEmpty(ErrorMessage))
+                {
+                    return true;
+                }
+                return false;
+            }
+ }
         /// <summary>
         /// Holds the error message if HasError = True
         /// </summary>

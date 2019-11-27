@@ -11,6 +11,7 @@ using DataModel.Shared;
 using DataModel.DTOModels;
 using DataRepository;
 using System.Threading;
+using System.Reflection;
 
 namespace DataService.Services
 {
@@ -54,10 +55,45 @@ namespace DataService.Services
             }
             catch (Exception e)
             {
-                LogCritical(e.Message);
+                LogCritical("|" + MethodBase.GetCurrentMethod() + "|" + e.Message);
                 return new ReportGroupListDTOModel()
                 {
-                    HasError = true,
+                    ErrorMessage = e.Message,
+                };
+            }
+        }
+        #endregion
+
+        #region GetPerformanceIndicators
+        /// <summary>
+        /// Retrieve a list of all PerformanceIndicators
+        /// <para>Returns PerformanceIndicatorsListDTOModel</para>
+        /// </summary>
+        /// <returns>PerformanceIndicatorsListDTOModel</returns>
+        public async Task<PerformanceIndicatorsListDTOModel> GetPerformanceIndicatorsAsync()
+        {
+            return await GetPerformanceIndicatorsAsync(new CancellationToken(false));
+        }
+
+        public async Task<PerformanceIndicatorsListDTOModel> GetPerformanceIndicatorsAsync(CancellationToken token)
+        {
+            return await Task.FromResult<PerformanceIndicatorsListDTOModel>(GetPerformanceIndicators());
+        }
+
+        public PerformanceIndicatorsListDTOModel GetPerformanceIndicators()
+        {
+            try
+            {
+                return new PerformanceIndicatorsListDTOModel()
+                {
+                    Items = _repository.GetPerformanceIndicators()
+                };
+            }
+            catch (Exception e)
+            {
+                LogCritical("|" + MethodBase.GetCurrentMethod() + "|" + e.Message);
+                return new PerformanceIndicatorsListDTOModel()
+                {
                     ErrorMessage = e.Message,
                 };
             }

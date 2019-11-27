@@ -61,13 +61,10 @@ namespace Display.Pages
                 btn.MenuButtons = new List<MenuButton>();
                 foreach(ReportDef def in grp.ReportDefs)
                 {
-                    btn.MenuButtons.Add(new MenuButton { ButtonText = def.Name, IsDisabled = IsAuthenticated, ToolTip = def.Description, Url = "https://gallery.shinyapps.io/051-movie-explorer", });
+                    btn.MenuButtons.Add(new MenuButton { ButtonText = def.Name, IsDisabled = IsAuthenticated, ToolTip = def.Description, Url = def.URL, });
                 }
                 MenuGroupButtons.Add(btn);
             };
-            //MenuButton btn = new MenuButton { ButtonText = grp.Name, IsDisabled = IsAuthenticated, ToolTip = grp.Description, Url = "https://gallery.shinyapps.io/051-movie-explorer", },
-            //    new MenuButton { ButtonText = "Lego", IsDisabled = IsAuthenticated, ToolTip = "Runs the Lego sample located at gallery.shinyapps.io", Url = "https://gallery.shinyapps.io/lego-viz/", },
-            //    new MenuButton { ButtonText = "k-means", IsDisabled = !IsAuthenticated, ToolTip = "Runs the K-means sample located at gallery.shinyapps.io", Url = "https://gallery.shinyapps.io/050-kmeans-example", },
         }
     }
 }

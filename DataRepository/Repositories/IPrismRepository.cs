@@ -8,13 +8,22 @@ namespace DataRepository
 {
     public interface IPrismRepository
     {
-        #region Categories
+        #region GetReportGroups
         /// <summary>
-        /// Retrieve a list of all ReportGroup
+        /// Retrieve a list of all ReportGroups
         /// <para>Returns List<ReportGroup></para>
         /// </summary>
         /// <returns>List<ReportGroup></returns>
         List<ReportGroup> GetReportGroups();
+        #endregion
+
+        #region GetPerformanceIndicators
+        /// <summary>
+        /// Retrieve a list of all PerformanceIndicators
+        /// <para>Returns List<PerformanceIndicator></para>
+        /// </summary>
+        /// <returns>List<PerformanceIndicator></returns>
+        List<PerformanceIndicator> GetPerformanceIndicators();
         #endregion
     }
 }

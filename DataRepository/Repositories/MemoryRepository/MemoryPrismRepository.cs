@@ -16,6 +16,7 @@ namespace DataRepository.MemoryRepository
         private readonly List<ReportDef> _returnGroupReturn;
         private readonly List<ReportDef> _returnGroupExposure;
         private readonly List<ReportDef> _returnGroupMisc;
+        private readonly List<PerformanceIndicator> _performanceIndicators;
 
         public MemoryPrismRepository(ILogger<MemoryPrismRepository> logger) : base(logger)
         {
@@ -28,6 +29,7 @@ namespace DataRepository.MemoryRepository
                     ReportGroupID = 1,
                     Name = "Return Report 1",
                     Description = "A description for this report",
+                    URL = "https://gallery.shinyapps.io/051-movie-explorer",
                 },
                 new ReportDef()
                 {
@@ -35,6 +37,7 @@ namespace DataRepository.MemoryRepository
                     ReportGroupID = 1,
                     Name = "Return Report 2",
                     Description = "A description for this report",
+                    URL = "https://gallery.shinyapps.io/lego-viz/",
                 },
             };
 
@@ -46,6 +49,7 @@ namespace DataRepository.MemoryRepository
                     ReportGroupID = 2,
                     Name = "Exposure Report 1",
                     Description = "A description for this report",
+                    URL = "https://gallery.shinyapps.io/050-kmeans-example",
                 },
                 new ReportDef()
                 {
@@ -53,6 +57,7 @@ namespace DataRepository.MemoryRepository
                     ReportGroupID = 2,
                     Name = "Exposure Report 2",
                     Description = "A description for this report",
+                    URL = "PartialReportPerformance",
                 },
             };
 
@@ -99,6 +104,24 @@ namespace DataRepository.MemoryRepository
                 },
             };
             #endregion
+
+            #region PerformanceIndicators
+            _performanceIndicators = new List<PerformanceIndicator>()
+            {
+                new PerformanceIndicator()
+                {
+                    ID = 1,
+                    Month = "January",
+                    PercentChange = 0.047,
+                },
+                new PerformanceIndicator()
+                {
+                    ID = 2,
+                    Month = "February",
+                    PercentChange = 0.051,
+                }
+            };
+            #endregion
         }
         #endregion
 
@@ -109,5 +132,11 @@ namespace DataRepository.MemoryRepository
         }
         #endregion
 
+        #region PerformanceIndicators
+        public List<PerformanceIndicator> GetPerformanceIndicators()
+        {
+            return _performanceIndicators;
+        }
+        #endregion
     }
 }

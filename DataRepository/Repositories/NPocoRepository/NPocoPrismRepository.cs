@@ -31,16 +31,37 @@ namespace DataRepository.NPocoRepository
 
         #region ReportGroups
         /// <summary>
-        /// Retrieve a list of all Categories
-        /// <para>Returns CategoryListDTOModel</para>
+        /// Retrieve a list of all ReportGroups
+        /// <para>Returns List<ReportGroup></para>
         /// </summary>
-        /// <returns>CategoryListDTOModel</returns>
+        /// <returns>List<ReportGroup></returns>
         public List<ReportGroup> GetReportGroups()
         {
             using IDatabase db = Conn();
             try
             {
                 return db.Fetch<ReportGroup>("select * from dbo.vReportGroup");
+            }
+            catch (Exception e)
+            {
+                LogCritical("|" + MethodBase.GetCurrentMethod() + "|" + e.Message);
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+        #region PerformanceIndicators
+        /// <summary>
+        /// Retrieve a list of all PerformanceIndicators
+        /// <para>Returns List<PerformanceIndicator></para>
+        /// </summary>
+        /// <returns>List<PerformanceIndicator></returns>
+        public List<PerformanceIndicator> GetPerformanceIndicators()
+        {
+            using IDatabase db = Conn();
+            try
+            {
+                return db.Fetch<PerformanceIndicator>("select * from dbo.vPerformanceIndicator");
             }
             catch (Exception e)
             {
