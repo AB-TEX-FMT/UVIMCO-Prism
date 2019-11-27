@@ -33,6 +33,11 @@ namespace DataService.Services
         /// <para>Returns ReportGroupListDTOModel</para>
         /// </summary>
         /// <returns>ReportGroupListDTOModel</returns>
+        public async Task<ReportGroupListDTOModel> GetReportGroupsAsync()
+        {
+            return await GetReportGroupsAsync(new CancellationToken(false));
+        }
+
         public async Task<ReportGroupListDTOModel> GetReportGroupsAsync(CancellationToken token)
         {
             return await Task.FromResult<ReportGroupListDTOModel>(GetReportGroups());

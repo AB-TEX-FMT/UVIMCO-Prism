@@ -1,6 +1,7 @@
 ﻿using DataModel.DTOModels;
 using DataModel.Shared;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DataService.Services
@@ -13,7 +14,9 @@ namespace DataService.Services
         /// <para>Returns ReportGroupListDTOModel</para>
         /// </summary>
         /// <returns>ReportGroupListDTOModel</returns>
-        Task<ReportGroupListDTOModel> GetReportGroups();
+        ReportGroupListDTOModel GetReportGroups();
+        Task<ReportGroupListDTOModel> GetReportGroupsAsync();
+        Task<ReportGroupListDTOModel> GetReportGroupsAsync(CancellationToken token);
         #endregion
     }
 }

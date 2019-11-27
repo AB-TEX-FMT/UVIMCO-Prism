@@ -20,31 +20,6 @@ namespace DataRepository.MemoryRepository
         public MemoryPrismRepository(ILogger<MemoryPrismRepository> logger) : base(logger)
         {
             #region ReportGroups
-            _reportGroups = new List<ReportGroup>()
-            {
-                new ReportGroup()
-                {
-                    ID = 1,
-                    Name = "Return",
-                    Description = "Reports related to Investment Returns",
-                    ReportDefs = _returnGroupReturn,
-                },
-                new ReportGroup()
-                {
-                    ID = 2,
-                    Name = "Exposure",
-                    Description = "Reports related to Investment Exposure",
-                    ReportDefs = _returnGroupExposure,
-                },
-                new ReportGroup()
-                {
-                    ID = 3,
-                    Name = "Misc",
-                    Description = "Contains reports that don't fit into any other category",
-                    ReportDefs = _returnGroupMisc,
-                },
-            };
-
             _returnGroupReturn = new List<ReportDef>()
             {
                 new ReportDef()
@@ -96,6 +71,31 @@ namespace DataRepository.MemoryRepository
                     ReportGroupID = 3,
                     Name = "Misc Report 2",
                     Description = "A description for this report",
+                },
+            };
+
+            _reportGroups = new List<ReportGroup>()
+            {
+                new ReportGroup()
+                {
+                    ID = 1,
+                    Name = "Return",
+                    Description = "Reports related to Investment Returns",
+                    ReportDefs = _returnGroupReturn,
+                },
+                new ReportGroup()
+                {
+                    ID = 2,
+                    Name = "Exposure",
+                    Description = "Reports related to Investment Exposure",
+                    ReportDefs = _returnGroupExposure,
+                },
+                new ReportGroup()
+                {
+                    ID = 3,
+                    Name = "Misc",
+                    Description = "Contains reports that don't fit into any other category",
+                    ReportDefs = _returnGroupMisc,
                 },
             };
             #endregion

@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace Display.ViewModels
 {
-    public class MenuButton
+    public class MenuGroupButton
     {
         public string ButtonText { get; set; }
-        public string ButtonTextNoSpace { 
+        public string ButtonTextNoSpace
+        {
             get
             {
                 return ButtonText.Replace(" ", "_");
@@ -16,6 +17,6 @@ namespace Display.ViewModels
         }
         public bool IsDisabled { get; set; }
         public string ToolTip { get; set; }
-        public string Url { get; set; }
+        public List<MenuButton> MenuButtons { get; set; }
     }
 }

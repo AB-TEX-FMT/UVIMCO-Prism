@@ -48,7 +48,7 @@ namespace DataService
             ServiceOptions so = iop.Value;
 
             // Configure the Data base Factory
-            services.AddScoped<IDBFactory, DbFactory>(x => new DbFactory(so.AuthenticationDBConnectionString, so.PrismDBConnectionString)));
+            services.AddScoped<IDBFactory, DbFactory>(x => new DbFactory(so.AuthenticationDBConnectionString, so.PrismDBConnectionString));
 
             if (so.UseInMemoryRepository)
             {

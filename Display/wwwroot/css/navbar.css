@@ -1,5 +1,5 @@
 ﻿.navbar-default {
-    background-color: #232D4B;
+    background-color: var(--backgroundColor);
     border-color: #AA0000;
     border-radius: 0;
 }
@@ -18,8 +18,8 @@
 
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: #232D4B;
-    background-color: #E57200;
+    color: var(--primaryColor);
+    background-color: var(--secondaryColor);
     border-top-style: groove;
     border-top-color: #FFF;
     border-radius: 3px;
@@ -48,4 +48,10 @@
 
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #FFF;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }

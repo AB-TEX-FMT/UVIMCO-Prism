@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Display.Utilities.Interfaces;
+using System;
 
 namespace Display.Pages
 {
@@ -47,5 +48,18 @@ namespace Display.Pages
         }
 
         public bool IsAuthenticated { get; set; }
+
+        // Holds any error messages for the View
+        public string ErrorMessage { get; set; }
+
+        public bool HasError
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(ErrorMessage))
+                { return false; }
+                return true;
+            }
+        }
     }
 }

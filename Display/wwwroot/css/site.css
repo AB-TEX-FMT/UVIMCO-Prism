@@ -1,5 +1,36 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿/* Page styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+    --backgroundColor: lightgray; /*Menus and Navbar*/
+    --primaryColor: #232D4B; /*Jefferson Blue*/
+    --secondaryColor: #E57200; /*Rotunda Orange*/
+    /*background-color: var(--primaryColor);*/
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
 
 a.navbar-brand {
   white-space: normal;
@@ -7,32 +38,62 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.background {
+    background-color: var(--backgroundColor);
+}
+
+.background-reverse {
+    background-color: var(--secondaryColor);
+}
+
+.font-color {
+    background-color: var(--secondaryColor);
+}
+
+.font-color-reverse {
+    background-color: var(--primaryColor);
+}
+
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.btn {
+    color: var(--secondaryColor);
+    background-color: var(--backgroundColor);
+    border-width: 0px;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.btn-menu-left {
+    border-left-style: groove;
+    border-left-color: #FFF;
+    border-left-width: 5px;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
+.btn-menu-navbar {
+    border-top-style: groove;
+    border-top-color: #FFF;
 }
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    color: #232D4B;
+    background-color: var(--secondaryColor);
+    /*color: var(--primaryColor);
+    background-color: var(--secondaryColor);*/
+}
+
+.btn:hover {
+    color: var(--primaryColor);
+    background-color: var(--secondaryColor);
+    border-top-style: groove;
+    border-top-color: #FFF;
+    border-radius: 3px;
+}
+
+.btn:active, .btn.active {
+    color: var(--primaryColor);
+    background-color: var(--secondaryColor);
 }
 
 .border-top {
@@ -53,19 +114,4 @@ button.accept-policy {
 
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
-}

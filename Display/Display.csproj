@@ -8,4 +8,10 @@
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DataModel\DataModel.csproj" />
+    <ProjectReference Include="..\DataRepository\DataRepository.csproj" />
+    <ProjectReference Include="..\DataService\DataService.csproj" />
+  </ItemGroup>
+
 </Project>

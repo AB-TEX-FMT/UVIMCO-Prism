@@ -2,12 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataRepository;
+using DataRepository.Factories;
+using DataRepository.MemoryRepository;
+using DataRepository.NPocoRepository;
+using DataService;
+using DataService.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace Display
 {
@@ -30,6 +37,35 @@ namespace Display
         {
             // Configure logging
             services.AddLogging();
+
+            //// Load configuration options from appSettings
+            //IConfigurationSection sec = Configuration.GetSection("ServiceOptions");
+            //services.Configure<ServiceOptions>(sec);
+            //services.Configure<ServiceOptions>(Configuration.GetSection("ServiceOptions"));
+
+            //// Loads the configuration to an object for use below
+            //// TODO: Figure out a better way to do this. It works but it's a bit kludgy.
+            //ServiceProvider sp = services.BuildServiceProvider();
+            //IOptions<ServiceOptions> iop = sp.GetService<IOptions<ServiceOptions>>();
+            //ServiceOptions so = iop.Value;
+
+            // Configure the Data base Factory
+            //services.AddScoped<IDBFactory, DbFactory>(x => new DbFactory(so.AuthenticationDBConnectionString, so.PrismDBConnectionString));
+            services.AddScoped<IDBFactory, DbFactory>(x => new DbFactory(Configuration.GetConnectionString("EFAuthenticationDBConnectionString"), Configuration.GetConnectionString("WarehouseDBConnectionString")));
+
+            //if (so.UseInMemoryRepository)
+            if (Boolean.Parse(Configuration["ServiceOptions:UseInMemoryRepository"]))
+            {
+                // Use the In Memory option
+                services.AddScoped<IPrismRepository, MemoryPrismRepository>();
+            }
+            else
+            {
+                // Use the actual DB
+                services.AddScoped<IPrismRepository, NPocoPrismRepository>();
+            }
+            // Configure the data Service
+            services.AddScoped<IPrismService, PrismService>();
 
             services.AddRazorPages();
         }
