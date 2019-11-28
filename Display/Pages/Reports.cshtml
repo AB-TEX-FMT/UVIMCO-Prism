@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Home page";
 }
-
+<partial name="_ErrorMessagePartial" for="@Model.ErrorMessage" />
 <div class="row overflow-auto" style="height: 75vh;">
     <div class="col-md-2 background" style="padding-right: 0px;">
         <partial name="_LeftMenuPartial" />
