@@ -1,8 +1,9 @@
-﻿using DataModel.Shared;
+﻿using DataModel.BaseModels;
+using DataModel.Shared;
 
 namespace DataModel.DTOModels
 {
-    public class ApplicationRoleDTOModel : BaseDTOModel
+    public class ApplicationRoleDTOModel : BaseModel
     {
         public ApplicationRole Item { get; set; }
 

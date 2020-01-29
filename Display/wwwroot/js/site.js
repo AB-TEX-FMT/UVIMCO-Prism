@@ -1,4 +1,11 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your Javascript code.
+﻿//Construct all columns for a table
+function constructTableColumns(response, columns) {
+    //columns for DataTables
+    $.each(JSON.parse(response.columns), function (i, val) {
+        if (val["format"] == "Currency") { var col = { data: val["data"], title: val["name"], render: $.fn.dataTable.render.number(',', '.', 2, '$') }; }
+        else if (val["format"] == "Decimal") { var col = { data: val["data"], title: val["name"], render: $.fn.dataTable.render.number(',', '.', 2, '') }; }
+        else { var col = { data: val["data"], title: val["name"] }; }
+        columns.push(col);
+    });
+    return [columns];
+}

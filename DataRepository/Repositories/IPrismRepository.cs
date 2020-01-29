@@ -1,4 +1,5 @@
-﻿using DataModel.Shared;
+﻿using DataModel.DTOModels;
+using DataModel.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,13 +18,13 @@ namespace DataRepository
         List<ReportGroup> GetReportGroups();
         #endregion
 
-        #region GetPerformanceIndicators
+        #region GetReport
         /// <summary>
-        /// Retrieve a list of all PerformanceIndicators
-        /// <para>Returns List<PerformanceIndicator></para>
+        /// Retrieve a ReportDTOModel
+        /// <para>Returns ReportDTOModel</para>
         /// </summary>
-        /// <returns>List<PerformanceIndicator></returns>
-        List<PerformanceIndicator> GetPerformanceIndicators();
+        /// <returns>ReportDTOModel</returns>
+        ReportDTOModel GetReport(ReportDTOModel reportDTOModel);
         #endregion
     }
 }

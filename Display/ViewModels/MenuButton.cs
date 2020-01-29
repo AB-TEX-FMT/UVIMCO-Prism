@@ -17,5 +17,7 @@ namespace Display.ViewModels
         public bool IsDisabled { get; set; }
         public string ToolTip { get; set; }
         public string Url { get; set; }
+
+        public bool RenderNatively { get; set; }
     }
 }

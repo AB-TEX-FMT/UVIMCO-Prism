@@ -61,7 +61,7 @@ namespace Display.Pages
                 btn.MenuButtons = new List<MenuButton>();
                 foreach(ReportDef def in grp.ReportDefs)
                 {
-                    btn.MenuButtons.Add(new MenuButton { ButtonText = def.Name, IsDisabled = IsAuthenticated, ToolTip = def.Description, Url = def.URL, });
+                    btn.MenuButtons.Add(new MenuButton { ButtonText = def.Name, IsDisabled = IsAuthenticated, ToolTip = def.Description, Url = def.URL, RenderNatively = def.RenderNatively});
                 }
                 MenuGroupButtons.Add(btn);
             };

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/navbar.css" />
+    <link rel="stylesheet" href="~/lib/datatables/datatables.css" />
+
 </head>
 <body>
     <header>
@@ -14,7 +16,7 @@
             <div class="container-fluid">
                 <!-- logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" asp-page="/Index"><img src="~/logo-uvimco.png" width="350"/></a>
+                    <a class="navbar-brand" asp-page="/Index"><img src="~/logo-uvimco.png" width="350" /></a>
                     <button class="btn btn-menu-navbar navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -43,7 +45,8 @@
             </div>
         </nav>
     </header>
-    <div class="flex-container" style="margin-left: 0px; margin-right: 0px; margin-top: 0px; padding-left:0px; padding-right: 0px; width: 100%">
+
+    <div id="home" class="flex-container" style="margin-left: 0px; margin-right: 0px; margin-top: 0px; padding-left:0px; padding-right: 0px; width: 100%">
         @RenderBody()
     </div>
 
@@ -53,9 +56,10 @@
         </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/datatables/datatables.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

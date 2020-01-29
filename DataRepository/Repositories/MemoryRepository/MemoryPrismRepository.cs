@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using DataModel.DTOModels;
 
 namespace DataRepository.MemoryRepository
 {
@@ -13,49 +14,58 @@ namespace DataRepository.MemoryRepository
         #region Class Setup
         [SuppressMessage("Microsoft.Usage", "IDE0044:MakeFieldReadOnly", MessageId = "args")]
         private readonly List<ReportGroup> _reportGroups;
-        private readonly List<ReportDef> _returnGroupReturn;
-        private readonly List<ReportDef> _returnGroupExposure;
+        private readonly List<ReportDef> _returnGroupAnalysis;
+        private readonly List<ReportDef> _returnGroupHoldings;
         private readonly List<ReportDef> _returnGroupMisc;
         private readonly List<PerformanceIndicator> _performanceIndicators;
 
         public MemoryPrismRepository(ILogger<MemoryPrismRepository> logger) : base(logger)
         {
             #region ReportGroups
-            _returnGroupReturn = new List<ReportDef>()
+            _returnGroupAnalysis = new List<ReportDef>()
             {
                 new ReportDef()
                 {
                     ID = 1,
                     ReportGroupID = 1,
-                    Name = "Return Report 1",
-                    Description = "A description for this report",
-                    URL = "https://gallery.shinyapps.io/051-movie-explorer",
+                    Name = "Portfolio Analysis",
+                    Description = "Full UVIMCO Portfolio Review",
+                    URL = "PartialReport",
+                    RenderNatively = true,
                 },
                 new ReportDef()
                 {
                     ID = 2,
                     ReportGroupID = 1,
-                    Name = "Return Report 2",
-                    Description = "A description for this report",
+                    Name = "Public Fund Analysis",
+                    Description = "Review of publicly traded funds",
                     URL = "https://gallery.shinyapps.io/lego-viz/",
                 },
-            };
-
-            _returnGroupExposure = new List<ReportDef>()
-            {
                 new ReportDef()
                 {
                     ID = 3,
+                    ReportGroupID = 1,
+                    Name = "Private Fund Analysis",
+                    Description = "Review of privately held funds",
+                    URL = "https://gallery.shinyapps.io/051-movie-explorer",
+                },
+            };
+
+            _returnGroupHoldings = new List<ReportDef>()
+            {
+                new ReportDef()
+                {
+                    ID = 4,
                     ReportGroupID = 2,
-                    Name = "Exposure Report 1",
+                    Name = "Top Holdings",
                     Description = "A description for this report",
                     URL = "https://gallery.shinyapps.io/050-kmeans-example",
                 },
                 new ReportDef()
                 {
-                    ID = 4,
+                    ID = 5,
                     ReportGroupID = 2,
-                    Name = "Exposure Report 2",
+                    Name = "Place Holder Report 2",
                     Description = "A description for this report",
                     URL = "PartialReportPerformance",
                 },
@@ -84,16 +94,16 @@ namespace DataRepository.MemoryRepository
                 new ReportGroup()
                 {
                     ID = 1,
-                    Name = "Return",
-                    Description = "Reports related to Investment Returns",
-                    ReportDefs = _returnGroupReturn,
+                    Name = "Analysis",
+                    Description = "Reports related to portfolio/fund analysis",
+                    ReportDefs = _returnGroupAnalysis,
                 },
                 new ReportGroup()
                 {
                     ID = 2,
-                    Name = "Exposure",
-                    Description = "Reports related to Investment Exposure",
-                    ReportDefs = _returnGroupExposure,
+                    Name = "Holdings",
+                    Description = "Reports related to portfolio/fund holdings",
+                    ReportDefs = _returnGroupHoldings,
                 },
                 new ReportGroup()
                 {
@@ -132,10 +142,10 @@ namespace DataRepository.MemoryRepository
         }
         #endregion
 
-        #region PerformanceIndicators
-        public List<PerformanceIndicator> GetPerformanceIndicators()
+        #region GetReport
+        public ReportDTOModel GetReport(ReportDTOModel reportDTOModel)
         {
-            return _performanceIndicators;
+            return reportDTOModel;
         }
         #endregion
     }

@@ -67,7 +67,11 @@ namespace Display
             // Configure the data Service
             services.AddScoped<IPrismService, PrismService>();
 
-            services.AddRazorPages();
+            services.AddRazorPages()
+            .AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AddPageRoute("/Reports", "/Reports/{url?}/");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

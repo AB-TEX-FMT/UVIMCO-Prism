@@ -1,4 +1,5 @@
-﻿using DataModel.Shared;
+﻿using DataModel.BaseModels;
+using DataModel.Shared;
 using System.Collections.Generic;
 
 namespace DataModel.DTOModels
@@ -8,7 +9,7 @@ namespace DataModel.DTOModels
     /// <para>string RoleID</para>
     /// <para>List<ApplicationRoleClaim> Items</para>
     /// </summary>
-    public class ApplicationRoleClaimsDTOModel : BaseDTOModel
+    public class ApplicationRoleClaimsDTOModel : BaseModel
     {
         /// <summary>
         /// Holds the RoleID

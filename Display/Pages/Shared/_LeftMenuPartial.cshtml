@@ -7,13 +7,13 @@
             </div>
             <div class="card-body collapse background" data-parent="#accordionGrp" id="@button.ButtonTextNoSpace" style="padding-left: 10px; padding-top: 0px; padding-bottom: 0px; padding-right: 0px;">
                 <div id="accordionRep_@button.ButtonTextNoSpace">
-                    @foreach (var report in button.MenuButtons)
+                    @foreach (var btn in button.MenuButtons)
                     {
                         <div class="card" style="width: 100%">
                             <div class="card-header background" style="padding: 0px;">
-                                <button type="button" class="btn btn-menu-left" @(report.IsDisabled ? "disabled" : "") style="margin: 0px; width: 100%;" onclick="setURL('@report.Url')" data-toggle="collapse" href="#@report.ButtonTextNoSpace" data-toggle="tooltip" data-placement="bottom" title="@report.ToolTip">@report.ButtonText</button>
+                                <button type="button" class="btn btn-menu-left" @(btn.IsDisabled ? "disabled" : "") style="margin: 0px; width: 100%;" onclick="setURL('@btn.Url', '@btn.RenderNatively')" data-toggle="collapse" href="#@btn.ButtonTextNoSpace" data-toggle="tooltip" data-placement="bottom" title="@btn.ToolTip">@btn.ButtonText</button>
                             </div>
-                            <div class="card-body collapse background" data-parent="#accordionRep_@button.ButtonTextNoSpace" id="@report.ButtonTextNoSpace" style="padding-left: 10px; padding-top: 0px; padding-bottom: 0px; padding-right: 0px;">
+                            <div class="card-body collapse background" data-parent="#accordionRep_@button.ButtonTextNoSpace" id="@btn.ButtonTextNoSpace" style="padding-left: 10px; padding-top: 0px; padding-bottom: 0px; padding-right: 0px;">
                                 <div>
                                     Test
                                 </div>

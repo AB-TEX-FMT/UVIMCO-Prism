@@ -19,15 +19,15 @@ namespace DataService.Services
         Task<ReportGroupListDTOModel> GetReportGroupsAsync(CancellationToken token);
         #endregion
 
-        #region GetPerformanceIndicators
+        #region GetReport
         /// <summary>
         /// Retrieve a list of all PerformanceIndicators
         /// <para>ReturnsPerformanceListDTOModel</para>
         /// </summary>
         /// <returns>ReturnsPerformanceListDTOModel</returns>
-        PerformanceIndicatorsListDTOModel GetPerformanceIndicators();
-        Task<PerformanceIndicatorsListDTOModel> GetPerformanceIndicatorsAsync();
-        Task<PerformanceIndicatorsListDTOModel> GetPerformanceIndicatorsAsync(CancellationToken token);
+        ReportDTOModel GetReport(ReportDTOModel reportDTOModel);
+        Task<ReportDTOModel> GetReportAsync(ReportDTOModel reportDTOModel);
+        Task<ReportDTOModel> GetReportAsync(CancellationToken token, ReportDTOModel reportDTOModel);
         #endregion
     }
 }

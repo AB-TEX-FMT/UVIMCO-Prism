@@ -1,4 +1,5 @@
-﻿using DataModel.Shared;
+﻿using DataModel.BaseModels;
+using DataModel.Shared;
 using System.Collections.Generic;
 
 namespace DataModel.DTOModels
@@ -7,7 +8,7 @@ namespace DataModel.DTOModels
     /// Holds an ApplicationClaim
     /// <para>List<ApplicationClaim> Items</para>
     /// </summary>
-    public class ApplicationClaimsDTOModel : BaseDTOModel
+    public class ApplicationClaimsDTOModel : BaseModel
     {
         /// <summary>
         /// Holds a List of ApplicationClaim

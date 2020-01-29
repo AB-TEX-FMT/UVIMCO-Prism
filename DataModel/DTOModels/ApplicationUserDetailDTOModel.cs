@@ -1,4 +1,5 @@
-﻿using DataModel.Shared;
+﻿using DataModel.BaseModels;
+using DataModel.Shared;
 
 namespace DataModel.DTOModels
 {
@@ -6,7 +7,7 @@ namespace DataModel.DTOModels
     /// User Detail Data Transfer Object Model
     /// <para>Item (User) Holds a User</para>
     /// </summary>
-    public class ApplicationUserDetailDTOModel : BaseDTOModel
+    public class ApplicationUserDetailDTOModel : BaseModel
     {
         public ApplicationUserDetail Item { get; set; }
     }

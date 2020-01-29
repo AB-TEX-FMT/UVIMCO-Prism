@@ -7,7 +7,7 @@ namespace DataModel.DTOModels
     /// Application User List Data Transfer Object Model
     /// <para>Items (User) Holds a list of User</para>
     /// </summary>
-    public class ApplicationUserListDTOModel : BaseDTOModel
+    public class ApplicationUserListDTOModel : BaseReportDTOModel
     {
         public List<ApplicationUser> Items { get; set; }
     }

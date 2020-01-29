@@ -1,8 +1,9 @@
-﻿using DataModel.Shared;
+﻿using DataModel.BaseModels;
+using DataModel.Shared;
 
 namespace DataModel.DTOModels
 {
-    public class ApplicationClaimDTOModel : BaseDTOModel
+    public class ApplicationClaimDTOModel : BaseModel
     {
         public ApplicationClaim Item { get; set; }
 

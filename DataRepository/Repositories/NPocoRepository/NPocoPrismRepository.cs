@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using static DataRepository.Factories.DbFactory;
+using DataModel.DTOModels;
 
 namespace DataRepository.NPocoRepository
 {
@@ -50,18 +51,19 @@ namespace DataRepository.NPocoRepository
         }
         #endregion
 
-        #region PerformanceIndicators
+        #region GetReport
         /// <summary>
-        /// Retrieve a list of all PerformanceIndicators
-        /// <para>Returns List<PerformanceIndicator></para>
+        /// Retrieve a ReportDTOModel
+        /// <para>Returns ReportDTOModel</para>
         /// </summary>
-        /// <returns>List<PerformanceIndicator></returns>
-        public List<PerformanceIndicator> GetPerformanceIndicators()
+        /// <returns>ReportDTOModel</returns>
+        public ReportDTOModel GetReport(ReportDTOModel reportDTOModel)
         {
             using IDatabase db = Conn();
             try
             {
-                return db.Fetch<PerformanceIndicator>("select * from dbo.vPerformanceIndicator");
+                return reportDTOModel;
+                //return db.Fetch<PerformanceIndicator>("select * from dbo.vPerformanceIndicator");
             }
             catch (Exception e)
             {

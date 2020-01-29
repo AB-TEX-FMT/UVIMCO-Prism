@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataModel.Shared
 {
-    public class SearchOptions
+    public class ColumnMetaData
     {
         /// <summary>
         /// Hold the toatal number of items of data

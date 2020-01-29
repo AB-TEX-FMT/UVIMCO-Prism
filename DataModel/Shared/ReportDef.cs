@@ -27,8 +27,13 @@ namespace DataModel.Shared
         public string Description { get; set; }
 
         /// <summary>
-        /// Holds the URL for the 
+        /// Holds the URL for the Report
         /// </summary>
         public string URL { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool RenderNatively { get; set; }
     }
 }

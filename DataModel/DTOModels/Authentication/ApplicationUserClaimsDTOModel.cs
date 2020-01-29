@@ -1,4 +1,5 @@
-﻿using DataModel.Shared;
+﻿using DataModel.BaseModels;
+using DataModel.Shared;
 using System.Collections.Generic;
 
 namespace DataModel.DTOModels
@@ -8,7 +9,7 @@ namespace DataModel.DTOModels
     /// <para>string UserID</para>
     /// <para>List<ApplicationUserClaim> Items</para>
     /// </summary>
-    public class ApplicationUserClaimsDTOModel : BaseDTOModel
+    public class ApplicationUserClaimsDTOModel : BaseModel
     {
         /// <summary>
         /// Holds the UserID

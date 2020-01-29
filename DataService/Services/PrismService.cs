@@ -64,35 +64,32 @@ namespace DataService.Services
         }
         #endregion
 
-        #region GetPerformanceIndicators
+        #region GetReport
         /// <summary>
-        /// Retrieve a list of all PerformanceIndicators
-        /// <para>Returns PerformanceIndicatorsListDTOModel</para>
+        /// Retrieve a report
+        /// <para>Returns ReportDTOModel</para>
         /// </summary>
-        /// <returns>PerformanceIndicatorsListDTOModel</returns>
-        public async Task<PerformanceIndicatorsListDTOModel> GetPerformanceIndicatorsAsync()
+        /// <returns>ReportDTOModel</returns>
+        public async Task<ReportDTOModel> GetReportAsync(ReportDTOModel reportDTOModel)
         {
-            return await GetPerformanceIndicatorsAsync(new CancellationToken(false));
+            return await GetReportAsync(new CancellationToken(false), reportDTOModel);
         }
 
-        public async Task<PerformanceIndicatorsListDTOModel> GetPerformanceIndicatorsAsync(CancellationToken token)
+        public async Task<ReportDTOModel> GetReportAsync(CancellationToken token, ReportDTOModel reportDTOModel)
         {
-            return await Task.FromResult<PerformanceIndicatorsListDTOModel>(GetPerformanceIndicators());
+            return await Task.FromResult<ReportDTOModel>(GetReport(reportDTOModel));
         }
 
-        public PerformanceIndicatorsListDTOModel GetPerformanceIndicators()
+        public ReportDTOModel GetReport(ReportDTOModel reportDTOModel)
         {
             try
             {
-                return new PerformanceIndicatorsListDTOModel()
-                {
-                    Items = _repository.GetPerformanceIndicators()
-                };
+                return _repository.GetReport(reportDTOModel);
             }
             catch (Exception e)
             {
                 LogCritical("|" + MethodBase.GetCurrentMethod() + "|" + e.Message);
-                return new PerformanceIndicatorsListDTOModel()
+                return new ReportDTOModel()
                 {
                     ErrorMessage = e.Message,
                 };
