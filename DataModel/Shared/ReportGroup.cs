@@ -22,6 +22,11 @@ namespace DataModel.Shared
         public string Description { get; set; }
 
         /// <summary>
+        /// Holds the ReportGroup Security or VisibilityLevel
+        /// </summary>
+        public int VisibilityLevel { get; set; }
+
+        /// <summary>
         /// Holds a List of all Report Definitions for this report group
         /// </summary>
         public List<ReportDef> ReportDefs { get; set; }

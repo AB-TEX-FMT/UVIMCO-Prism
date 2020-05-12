@@ -21,13 +21,35 @@ namespace DataService.Services
 
         #region GetReport
         /// <summary>
-        /// Retrieve a list of all PerformanceIndicators
-        /// <para>ReturnsPerformanceListDTOModel</para>
+        /// Retrieve the Report and it's Meta Data
+        /// <para>Returns ReportDTOModel</para>
         /// </summary>
-        /// <returns>ReturnsPerformanceListDTOModel</returns>
+        /// <returns>Returns ReportDTOModel</returns>
         ReportDTOModel GetReport(ReportDTOModel reportDTOModel);
         Task<ReportDTOModel> GetReportAsync(ReportDTOModel reportDTOModel);
         Task<ReportDTOModel> GetReportAsync(CancellationToken token, ReportDTOModel reportDTOModel);
+        #endregion
+
+        #region GetComponents
+        /// <summary>
+        /// Retrieve a list of all Components Meta Data
+        /// <para>Returns ComponentsDTOModel</para>
+        /// </summary>
+        /// <returns>Returns ComponentsDTOModel</returns>
+        ComponentsDTOModel GetComponents(ComponentsDTOModel componentsDTOModel);
+        Task<ComponentsDTOModel> GetComponentsAsync(ComponentsDTOModel componentsDTOModel);
+        Task<ComponentsDTOModel> GetComponentsAsync(CancellationToken token, ComponentsDTOModel componentsDTOModel);
+        #endregion
+
+        #region GetComponent
+        /// <summary>
+        /// Retrieve a Component and it's Meta Data
+        /// <para>Returns ComponentsDTOModel</para>
+        /// </summary>
+        /// <returns>Returns ComponentsDTOModel</returns>
+        ComponentDTOModel GetComponent(ComponentDTOModel componentDTOModel);
+        Task<ComponentDTOModel> GetComponentAsync(ComponentDTOModel componentDTOModel);
+        Task<ComponentDTOModel> GetComponentAsync(CancellationToken token, ComponentDTOModel componentDTOModel);
         #endregion
     }
 }

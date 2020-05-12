@@ -70,5 +70,15 @@ namespace DataModel.Shared
         /// Determines whether the Column is Visible
         /// </summary>
         public bool IsVisible { get; set; }
+
+        /// <summary>
+        /// Determines whether the Column is Bold
+        /// </summary>
+        public bool Bold { get; set; }
+
+        /// <summary>
+        /// Determines whether the Column is Italic
+        /// </summary>
+        public bool Italic { get; set; }
     }
 }

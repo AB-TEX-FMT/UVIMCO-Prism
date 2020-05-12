@@ -8,7 +8,7 @@ namespace Display.ViewModels
     public class MenuButton
     {
         public string ButtonText { get; set; }
-        public string ButtonTextNoSpace { 
+        public string ButtonTextNoSpace {
             get
             {
                 return ButtonText.Replace(" ", "_");
@@ -16,8 +16,6 @@ namespace Display.ViewModels
         }
         public bool IsDisabled { get; set; }
         public string ToolTip { get; set; }
-        public string Url { get; set; }
-
-        public bool RenderNatively { get; set; }
+        public string ReportID { get; set; }
     }
 }

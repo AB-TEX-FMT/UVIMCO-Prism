@@ -1,4 +1,7 @@
-﻿using NPoco;
+﻿using DataRepository.NPocoRepository.MapObjects;
+using NPoco;
+using NPoco.RowMappers;
+using NPoco.FluentMappings;
 using System.Data.SqlClient;
 
 namespace DataRepository.Factories
@@ -16,6 +19,7 @@ namespace DataRepository.Factories
 
         public IDatabase GetConnection(AvailableConnections conn)
         {
+
             return conn switch
             {
                 AvailableConnections.Auth => new Database(_authConnectionString, DatabaseType.SqlServer2008, SqlClientFactory.Instance),

@@ -22,8 +22,23 @@ namespace DataModel.Shared
         public string ReportHeader { get; set; }
 
         /// <summary>
-        /// Holds the Footnte of the Report
+        /// Holds the Footnote of the Report
         /// </summary>
         public string ReportFootNote { get; set; }
+
+        /// <summary>
+        /// Holds the Report Security or VisibilityLevel
+        /// </summary>
+        public int VisibilityLevel { get; set; }
+
+        /// <summary>
+        /// Determines whether the report renders natively or in an IFrame
+        /// </summary>
+        public bool RenderNatively { get; set; }
+
+        /// <summary>
+        /// Holds the URL for the Report
+        /// </summary>
+        public string URL { get; set; }
     }
 }

@@ -112,6 +112,15 @@ button.accept-policy {
   line-height: inherit;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
+/*##################*/
+/* Custom styling */
 
+.view-menubar {
+    background-image: linear-gradient(var(--primaryColor), white);
+    /*background-color: lightskyblue;*/
+}
+
+.view-menubar-reverse {
+    background-image: linear-gradient(white, var(--primaryColor));
+    /*background-color: lightskyblue;*/
+}

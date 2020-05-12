@@ -1,4 +1,15 @@
-@using Display
-@namespace Display.Pages
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using DataModel.Shared
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Authorization
 @using DataTables.AspNetCore.Mvc
+@using Display
+@using Display.Utilities
+@namespace Display.Pages
+
+@inject IAuthorizationService authorizationService
+@inject SignInManager<ApplicationUser> signInManager;
+@inject UserManager<ApplicationUser> UserManager
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Display
+

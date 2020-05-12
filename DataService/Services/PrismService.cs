@@ -96,5 +96,72 @@ namespace DataService.Services
             }
         }
         #endregion
+
+        #region GetComponents
+        /// <summary>
+        /// Retrieve a list of Component Meta Data
+        /// <para>Returns ReportDTOModel</para>
+        /// </summary>
+        /// <returns>ReportDTOModel</returns>
+        public async Task<ComponentsDTOModel> GetComponentsAsync(ComponentsDTOModel componentsDTOModel)
+        {
+            return await GetComponentsAsync(new CancellationToken(false), componentsDTOModel);
+        }
+
+        public async Task<ComponentsDTOModel> GetComponentsAsync(CancellationToken token, ComponentsDTOModel componentsDTOModel)
+        {
+            return await Task.FromResult<ComponentsDTOModel>(GetComponents(componentsDTOModel));
+        }
+
+        public ComponentsDTOModel GetComponents(ComponentsDTOModel componentsDTOModel)
+        {
+            try
+            {
+                return _repository.GetComponents(componentsDTOModel);
+            }
+            catch (Exception e)
+            {
+                LogCritical("|" + MethodBase.GetCurrentMethod() + "|" + e.Message);
+                return new ComponentsDTOModel()
+                {
+                    ErrorMessage = e.Message,
+                };
+            }
+        }
+        #endregion
+
+        #region GetComponent
+        /// <summary>
+        /// Retrieve a Component and it's Meta Data
+        /// <para>Returns ComponentDTOModel</para>
+        /// </summary>
+        /// <returns>ComponentDTOModel</returns>
+        public async Task<ComponentDTOModel> GetComponentAsync(ComponentDTOModel componentDTOModel)
+        {
+            return await GetComponentAsync(new CancellationToken(false), componentDTOModel);
+        }
+
+        public async Task<ComponentDTOModel> GetComponentAsync(CancellationToken token, ComponentDTOModel componentDTOModel)
+        {
+            return await Task.FromResult<ComponentDTOModel>(GetComponent(componentDTOModel));
+        }
+
+        public ComponentDTOModel GetComponent(ComponentDTOModel componentDTOModel)
+        {
+            try
+            {
+                componentDTOModel.Item = _repository.GetComponent(componentDTOModel.Item);
+                return componentDTOModel;
+            }
+            catch (Exception e)
+            {
+                LogCritical("|" + MethodBase.GetCurrentMethod() + "|" + e.Message);
+                return new ComponentDTOModel()
+                {
+                    ErrorMessage = e.Message,
+                };
+            }
+        }
+        #endregion
     }
 }

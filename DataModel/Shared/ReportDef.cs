@@ -9,12 +9,12 @@ namespace DataModel.Shared
         /// <summary>
         /// Holds the ReportDef ID
         /// </summary>
-        public int ID { get; set; }
+        public string ID { get; set; }
 
         /// <summary>
         /// Holds the ReportGroup ID
         /// </summary>
-        public int ReportGroupID { get; set; }
+        public string ReportGroupID { get; set; }
 
         /// <summary>
         /// Holds the ReportDef Name
@@ -27,13 +27,8 @@ namespace DataModel.Shared
         public string Description { get; set; }
 
         /// <summary>
-        /// Holds the URL for the Report
+        /// Holds the ReportGroup Security or VisibilityLevel
         /// </summary>
-        public string URL { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool RenderNatively { get; set; }
+        public int VisibilityLevel { get; set; }
     }
 }

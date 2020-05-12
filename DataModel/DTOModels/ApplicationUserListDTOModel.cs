@@ -1,4 +1,5 @@
-﻿using DataModel.Shared;
+﻿using DataModel.BaseModels;
+using DataModel.Shared;
 using System.Collections.Generic;
 
 namespace DataModel.DTOModels
@@ -7,7 +8,7 @@ namespace DataModel.DTOModels
     /// Application User List Data Transfer Object Model
     /// <para>Items (User) Holds a list of User</para>
     /// </summary>
-    public class ApplicationUserListDTOModel : BaseReportDTOModel
+    public class ApplicationUserListDTOModel : BaseModel
     {
         public List<ApplicationUser> Items { get; set; }
     }

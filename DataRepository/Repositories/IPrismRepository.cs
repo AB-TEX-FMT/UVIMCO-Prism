@@ -26,5 +26,23 @@ namespace DataRepository
         /// <returns>ReportDTOModel</returns>
         ReportDTOModel GetReport(ReportDTOModel reportDTOModel);
         #endregion
+
+        #region GetComponents
+        /// <summary>
+        /// Retrieve a ComponentsDTOModel
+        /// <para>Returns ComponentsDTOModel</para>
+        /// </summary>
+        /// <returns>ComponentsDTOModel</returns>
+        ComponentsDTOModel GetComponents(ComponentsDTOModel componentsDTOModel);
+        #endregion
+
+        #region GetComponent
+        /// <summary>
+        /// Retrieve a ComponentDTOModel
+        /// <para>Returns Component</para>
+        /// </summary>
+        /// <returns>Component</returns>
+        Component GetComponent(Component component);
+        #endregion
     }
 }

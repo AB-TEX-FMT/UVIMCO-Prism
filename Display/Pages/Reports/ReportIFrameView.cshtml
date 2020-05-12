@@ -1,0 +1,13 @@
+﻿@page
+@model ReportsDataModel
+@{
+    ViewBag.Title = "Reports page";
+    //var user = await UserManager.GetUserAsync(User);
+}
+
+@* Display any error messages *@
+<partial name="_ErrorMessagePartial" for="@Model.ErrorMessage" />
+
+<div class="container">
+    <iframe style="border: 0; position:relative; width:100%; height:100%" src="@Model.Report.ReportMetaData.URL"></iframe>
+</div>

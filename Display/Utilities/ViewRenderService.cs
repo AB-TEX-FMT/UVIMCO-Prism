@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Routing;
 using Display.Utilities.Interfaces;
 
-namespace PVS.Display.Utilities
+namespace Display.Utilities
 {
     public class ViewRenderService : IViewRenderService
     {

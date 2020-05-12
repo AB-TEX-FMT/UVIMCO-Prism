@@ -1,0 +1,54 @@
+﻿@page
+@model ReportsDataModel
+@{
+    ViewBag.Title = "Reports page";
+    //var user = await UserManager.GetUserAsync(User);
+}
+
+@* Display any error messages *@
+<partial name="_ErrorMessagePartial" for="@Model.ErrorMessage" />
+@if (!Model.HasError)
+{
+    <div class="container" style="margin-left: 0px; margin-right: 0px; margin-top: 0px; padding-left:0px; padding-right: 0px; width: 100%">
+        <div class="col-md-12">
+            <div class="row view-menubar">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <h3 class="text-center">@Model.Report.ReportMetaData.ReportTitle</h3>
+                </div>
+            </div>
+            <div class="row">
+                @*<div class="col-2"></div>*@
+                <div class="col-12 text-center">
+                    @Model.Report.ReportMetaData.ReportHeader
+                </div>
+                @*<div class="col-2"></div>*@
+            </div>
+            @foreach (ComponentMetaData componentMetaData in Model.Components)
+            {
+                //Add additional component types here
+                if (componentMetaData.ComponentType.ToLower() == "table")
+                {
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-10 text-center" id="dvComponent" @componentMetaData.ComponentTitle>
+                            @{await Html.RenderPartialAsync("_ComponentTableView", componentMetaData);}
+                            @*@await Html.PartialAsync("_ComponentTableView", componentMetaData)*@
+                            @*<partial name="_ComponentTableView" model="componentMetaData" />*@
+                            <hr />
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                }
+            }
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8 text-center">
+                    @Model.Report.ReportMetaData.ReportFootNote
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+    </div>
+}

@@ -12,7 +12,7 @@ namespace Display.ViewModels
         {
             get
             {
-                return ButtonText.Replace(" ", "_");
+                return (ButtonText != null) ? ButtonText.Replace(" ", "_") : "";
             }
         }
         public bool IsDisabled { get; set; }

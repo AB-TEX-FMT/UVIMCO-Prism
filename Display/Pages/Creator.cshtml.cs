@@ -41,9 +41,9 @@ namespace Display.Pages
         {
             MenuButtons = new List<MenuButton>()
             {
-                new MenuButton { ButtonText = "Customer", IsDisabled = IsAuthenticated, ToolTip = "Create a new Customer", Url = "https://localhost:44306/Creator", },
-                new MenuButton { ButtonText = "Asset", IsDisabled = IsAuthenticated, ToolTip = "Log an incoming asset", Url = "https://gallery.shinyapps.io/lego-viz/", },
-                new MenuButton { ButtonText = "Liability", IsDisabled = !IsAuthenticated, ToolTip = "Log an out going liability", Url = "https://gallery.shinyapps.io/050-kmeans-example", },
+                new MenuButton { ButtonText = "Customer", IsDisabled = IsAuthenticated, ToolTip = "Create a new Customer", },
+                new MenuButton { ButtonText = "Asset", IsDisabled = IsAuthenticated, ToolTip = "Log an incoming asset", },
+                new MenuButton { ButtonText = "Liability", IsDisabled = !IsAuthenticated, ToolTip = "Log an out going liability", },
             };
         }
     }
