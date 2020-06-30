@@ -134,17 +134,18 @@ namespace DataRepository.NPocoRepository
         /// <para>Returns ComponentDTOModel</para>
         /// </summary>
         /// <returns>ComponentDTOModel</returns>
-        public Component GetComponent(Component component)
+        public ComponentDTOModel GetComponent(ComponentDTOModel componentDTOModel)
         {
+            Component component = componentDTOModel.Item;
             using IDatabase db = Conn();
             try
             {
                 try
                 {
-                    List<ColumnMapping> cols = db.Fetch<ColumnMapping>("exec rpt.GetReportComponentMetadata @ComponentID",
+                    List<ColumnMapping> cols = db.Fetch<ColumnMapping>("exec rpt.GetReportComponentMetadata @ComponentGUID",
                         new
                         {
-                            ComponentID = component.ComponentID,
+                            ComponentID = component.ComponentGUID,
                         }
                     );
 
@@ -160,7 +161,7 @@ namespace DataRepository.NPocoRepository
                     //reportDTOModel.ColumnMetaData = columnMetaData;
                     //reportDTOModel.Items = employeeString;
                     //reportDTOModel.TotalItems = 2;
-                    return component;
+                    return componentDTOModel;
                 }
                 catch (Exception e)
                 {

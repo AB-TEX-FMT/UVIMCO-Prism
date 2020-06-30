@@ -13,16 +13,26 @@ namespace DataModel.Shared
     public class Component : BaseModel
     {
         /// <summary>
-        /// Holds the ID of the Component
+        /// Holds the GUID of the Component
         /// </summary>
-        public string ComponentID { get; set; }
+        public string ComponentGUID { get; set; }
 
         /// <summary>
         /// Hold the toatal number of items of data
         /// </summary>
         public long TotalItems { get; set; }
 
-        public JObject Items { get; set; }
+        public JArray Items { get; set; }
+
+        /// <summary>
+        /// Holds the Table Options of the Component
+        /// </summary>
+        public ComponentTableOptions TableOptions { get; set; }
+
+        /// <summary>
+        /// Holds the Chart Options of the Component
+        /// </summary>
+        public ComponentChartOptions ChartOptions { get; set; }
 
         /// <summary>
         /// Holds the Component's Meta Data

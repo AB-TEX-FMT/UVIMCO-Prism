@@ -1,0 +1,51 @@
+﻿@model ComponentMetaData
+@{
+    ViewBag.Title = "Reports page";
+    //var user = await UserManager.GetUserAsync(User);
+}
+
+<div class="container" style="margin-left: 0px; margin-right: 0px; margin-top: 0px; padding-left:0px; padding-right: 0px; width: 100%">
+    <div class="col-md-12">
+        <div class="row view-menubar-reverse">
+            <div class="col-md-2">
+                <input type="button" id="btn@Model.GUID" value="Reload" onclick="drawLineChart('@Model.GUID');" />
+            </div>
+            <div class="col-md-8">
+                <h3 class="text-center">@(Model.ComponentTitle == null ? "" : Model.ComponentTitle)</h3>
+            </div>
+            <div class="col-md-2">
+                <input type="button" id="btn@Model.GUID" value="Table" onclick="drawTable('@Model.GUID');" />
+            </div>
+        </div>
+        <div class="row view-component-header">
+            <div class="col-2"></div>
+            <div class="col-8 text-center">
+                @(Model.ComponentHeader is null ? "" : Model.ComponentHeader)
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row text-center" id="native">
+            <div class="col-12">
+                <!--Div that will hold the chart-->
+                <div id="chart_div_@Model.GUID"></div>
+            </div>
+        </div>
+        @if (!String.IsNullOrEmpty(Model.ComponentFootNote))
+        {
+            <div class="row view-component-footer">
+                <div class="col-2"></div>
+                <div class="col-8 text-center">
+                    @(Model.ComponentFootNote is null ? "" : Model.ComponentFootNote)
+                </div>
+                <div class="col-2"></div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawLineChart('@Model.GUID'));
+    });
+</script>

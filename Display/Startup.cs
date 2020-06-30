@@ -206,7 +206,9 @@ namespace Display
             {
                 options.Conventions.AddPageRoute("/Reports/ReportsView", "/Reports/");
                 options.Conventions.AddPageRoute("/Reports/ReportIFrameView", "/ReportsIFrameView/");
-                options.Conventions.AddPageRoute("/Reports/ReportDataView", "/ReportsDataView/{reportID}/{handler?}");
+                options.Conventions.AddPageRoute("/Reports/ReportDataView", "/ReportsDataView/{GUID}/{handler?}");
+                //options.Conventions.AddPageRoute("/Privacy", "/Privacy");
+                //options.Conventions.AddPageRoute("/About", "/About/");
             });
         }
 

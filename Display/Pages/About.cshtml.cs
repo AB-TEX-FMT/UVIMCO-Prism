@@ -5,22 +5,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using Display.ViewModels;
 
 namespace Display.Pages
 {
-    public class SubmissionFormCustomerModel : BasePageModel
+    public class AboutModel : PageModel
     {
-        public SubmissionFormCustomerModel(ILogger<IndexModel> logger) : base(logger)
+        private readonly ILogger<AboutModel> _logger;
+
+        public AboutModel(ILogger<AboutModel> logger)
         {
-            
+            _logger = logger;
         }
 
         public void OnGet()
-        {
-        }
-
-        public void OnPost(string Authentication)
         {
         }
     }

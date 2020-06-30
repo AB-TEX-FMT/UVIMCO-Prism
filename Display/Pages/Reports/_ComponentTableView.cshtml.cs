@@ -117,7 +117,7 @@ namespace Display.Pages
             { 
                 Item = new Component()
                 {
-                    ComponentID = id
+                    ComponentGUID = id
                 }
             };
             componentDTOModel = _service.GetComponent(componentDTOModel);

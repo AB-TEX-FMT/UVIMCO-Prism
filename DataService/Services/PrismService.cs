@@ -150,7 +150,7 @@ namespace DataService.Services
         {
             try
             {
-                componentDTOModel.Item = _repository.GetComponent(componentDTOModel.Item);
+                componentDTOModel = _repository.GetComponent(componentDTOModel);
                 return componentDTOModel;
             }
             catch (Exception e)

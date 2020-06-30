@@ -33,7 +33,7 @@ namespace DataModel.Shared
         /// <summary>
         /// Possible values for DataType
         /// </summary>
-        public enum DataTypeValue { Int, String, Date, Bool, Decimal, Currency }
+        public enum DataTypeValue { Int, String, Date, Bool, Decimal, Currency, Percent }
 
         /// <summary>
         /// Holds the Onscreen Display value
@@ -52,7 +52,7 @@ namespace DataModel.Shared
 
         /// <summary>
         /// Holds the DataType
-        /// Possible values int:string:date
+        /// Possible values int:string:date:bool:decimal:currency
         /// </summary>
         public DataTypeValue DataType { get; set; }
 

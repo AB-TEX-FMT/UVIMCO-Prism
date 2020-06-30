@@ -1,57 +1,59 @@
 ﻿@model ComponentMetaData
-@{
-    ViewBag.Title = "Reports page";
-    //var user = await UserManager.GetUserAsync(User);
-}
 
 <div class="container" style="margin-left: 0px; margin-right: 0px; margin-top: 0px; padding-left:0px; padding-right: 0px; width: 100%">
     <div class="col-md-12">
         <div class="row view-menubar-reverse">
-            <div class="col-md-4">
-                @*<button type="button" class="reloadData" value="@Model.GUID">Reload Data</button>
-                <input type='button' onclick='showMainTable(@Model.GUID)' value='Load Component Data'>*@
+            <div class="col-md-2">
+                <input type="button" id="btn@Model.GUID" value="Reload" onclick="drawTableChart('@Model.GUID');" />
             </div>
-            <div class="col-md-4">
+            <div class="col-md-8">
                 <h3 class="text-center">@(Model.ComponentTitle == null ? "" : Model.ComponentTitle)</h3>
             </div>
+            <div class="col-md-2">
+
+            </div>
         </div>
-        <div class="row">
+        <div class="row view-component-header">
             <div class="col-2"></div>
             <div class="col-8 text-center">
                 @(Model.ComponentHeader is null ? "" : Model.ComponentHeader)
             </div>
             <div class="col-2"></div>
         </div>
-        <div class="row text-center" id="native">
+        @*JSChart code - Can be removed if we dont with Chart.JS*@
+        @*<div class="row text-center" id="native">
             <div class="col-12">
                 <table id="tableMain" class="table table-striped table-bordered display compact nowrap" style="width:100%" cellspacing="0"></table>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8 text-center">
-                @(Model.ComponentFootNote is null ? "" : Model.ComponentFootNote)
+        </div>*@
+        <div class="row text-center" id="native">
+            <div class="col-12">
+                <!--Div that will hold the chart-->
+                <div id="table_div_@Model.GUID"></div>
             </div>
-            <div class="col-2"></div>
         </div>
+        @if (!String.IsNullOrEmpty(Model.ComponentFootNote))
+        {
+            <div class="row view-component-footer">
+                <div class="col-2"></div>
+                <div class="col-8 text-center">
+                    @(Model.ComponentFootNote is null ? "" : Model.ComponentFootNote)
+                </div>
+                <div class="col-2"></div>
+            </div>
+        }
     </div>
 </div>
 
 <script>
     $(document).ready(function () {
-        showMainTable("@Model.GUID");
-    });
-
-    $('button.reloadData').click(function () {
-        var valueData = {
-            'id_mhs': this.value // $(this).val() also works but it's unnecessary to invoke another jQuery call
-        };
-        showMainTable(valueData);
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawTableChart('@Model.GUID'));
     });
 
     //#################
     //Display Table
-    function showMainTable(GUID) {
+    @*function reloadData<%=@Model.GUID %>(GUID) {
         alert(GUID);
         $.ajax({
             "url": "/ReportsDataView/" + GUID + "/TableComponentJSON",
@@ -133,5 +135,5 @@
                 });
             }
         });
-    }
-</script>
+    }*@
+        </script>

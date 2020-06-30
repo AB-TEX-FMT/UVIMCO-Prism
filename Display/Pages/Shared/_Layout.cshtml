@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="https://kit.fontawesome.com/b54d9f6d72.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/navbar.css" />
     <link rel="stylesheet" href="~/lib/datatables/datatables.css" />
@@ -33,12 +34,12 @@
                                 <li class="nav-item"><a class="dropdown-item" asp-page="/Index" div="#home">Home</a></li>
                                 <li class="nav-item"><a class="dropdown-item" onclickdataview-for action="About" div="#home">About</a></li>
                                 <li class="nav-item"><a class="dropdown-item" onclickdataview-for action="Contact" div="#home">Contact</a></li>
-                                <li class="nav-item"><a class="dropdown-item" onclickdataview-for action="Privacy" div="#home">Privacy</a></li>
+                                <li class="nav-item"><a class="dropdown-item" onclickdataview-for route="" action="Privacy" div="#home">Privacy</a></li>
                             </ul>
                         </li>
                         @*<li class="nav-item">
-                            <a class="nav-link navbar-text" asp-page="/DataLoader" data-toggle="tooltip" data-placement="bottom" title="Place holder for Data Loader">Data Loader</a>
-                        </li>*@
+                                <a class="nav-link navbar-text" asp-page="/DataLoader" data-toggle="tooltip" data-placement="bottom" title="Place holder for Data Loader">Data Loader</a>
+                            </li>*@
                         <li class="nav-item">
                             <a class="nav-link navbar-text" onclickdataview-for action="Reports1" route="" div="#home" data-toggle="tooltip" data-placement="bottom" title="Use the Data Loader">Loader</a>
                         </li>
@@ -48,65 +49,65 @@
                     </ul>
                 </div>
                 @*<ul class="navbar-collapse collapse" id="collapsibleNavbar">
-                    @if (signInManager.IsSignedIn(User) && User.IsInRole("USER"))
-                    {
-                        <li class="nav-item dropdown">
-                            <a id="dropdownMenuMySafes" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">My Safes</a>
-                            <ul class="dropdown-menu dropdown">
-                                <li class="nav-item"><a class="dropdown-item" onclickdataview-for action="SafesGrid" route="@(user.Id)" div="#home">My Safes (Grid)</a></li>
-                                <li class="nav-item"><a class="dropdown-item" onclickdataview-for action="SafesTable" route="@(user.Id)" div="#home">My Safes (Table)</a></li>
-                                <li class="nav-item"><a class="dropdown-item" onclickdataview-for action="CreateSafe" route="@(user.Id)" div="#home">Create Safe</a></li>
-                            </ul>
-                        </li>
-                    }
-                    @if (signInManager.IsSignedIn(User) && (await authorizationService.AuthorizeAsync(User, "ManageRolesPolicy")).Succeeded)
-                    {
-                        <li class="nav-item dropdown">
-                            <a id="dropdownMenuRoles" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Roles</a>
-                            <ul class="dropdown-menu dropdown">
-                                <li><a class="dropdown-item" onclickdataview-for action="Roles" route="" div="#home">All Roles</a></li>
-                                @if ((await authorizationService.AuthorizeAsync(User, "CreateRolePolicy")).Succeeded)
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("USER"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a id="dropdownMenuMySafes" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">My Safes</a>
+                                <ul class="dropdown-menu dropdown">
+                                    <li class="nav-item"><a class="dropdown-item" onclickdataview-for action="SafesGrid" route="@(user.Id)" div="#home">My Safes (Grid)</a></li>
+                                    <li class="nav-item"><a class="dropdown-item" onclickdataview-for action="SafesTable" route="@(user.Id)" div="#home">My Safes (Table)</a></li>
+                                    <li class="nav-item"><a class="dropdown-item" onclickdataview-for action="CreateSafe" route="@(user.Id)" div="#home">Create Safe</a></li>
+                                </ul>
+                            </li>
+                        }
+                        @if (signInManager.IsSignedIn(User) && (await authorizationService.AuthorizeAsync(User, "ManageRolesPolicy")).Succeeded)
+                        {
+                            <li class="nav-item dropdown">
+                                <a id="dropdownMenuRoles" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Roles</a>
+                                <ul class="dropdown-menu dropdown">
+                                    <li><a class="dropdown-item" onclickdataview-for action="Roles" route="" div="#home">All Roles</a></li>
+                                    @if ((await authorizationService.AuthorizeAsync(User, "CreateRolePolicy")).Succeeded)
+                                    {
+                                        <li><a class="dropdown-item" onclickdataview-for action="CreateRole" route="" div="#home">Create Role</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        @if (signInManager.IsSignedIn(User) && (await authorizationService.AuthorizeAsync(User, "ManageUsersPolicy")).Succeeded)
+                        {
+                            <li class="nav-item dropdown">
+                                <a id="dropdownMenuUsers" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Users</a>
+                                <ul class="dropdown-menu dropdown">
+                                    <li><a class="dropdown-item" onclickdataview-for action="Users" route="" div="#home">All Users</a></li>
+                                    @if ((await authorizationService.AuthorizeAsync(User, "CreateUserPolicy")).Succeeded)
+                                    {
+                                        <li><a class="dropdown-item" onclickdataview-for action="CreateUser" route="" div="#home">Create User</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        <li class="nav-item dropdown ml-auto">
+                            <a id="dropdownMenuAccount" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Account</a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                @if (signInManager.IsSignedIn(User))
                                 {
-                                    <li><a class="dropdown-item" onclickdataview-for action="CreateRole" route="" div="#home">Create Role</a></li>
+                                    <li class="nav-item"><a class="nav-link" onclickdataview-for action="MyAccount" route="@(user.Id)" div="#home">My Account</a></li>
+                                    <li class="nav-item"><a class="nav-link" onclickdataview-for action="ChangePassword" route="@(user.Id)" div="#home">Change Password</a></li>
+                                    <li class="nav-item"><hr class="border-top" /></li>
+                                    <li class="nav-item">
+                                        <form method="post" id="formLogOut">
+                                        </form>
+                                        <a type="submit" class="nav-link" onClickFormView-for action="LogOut" route="" div="#home" request-type="POST" form-name="formLogOut" data-toggle="tooltip" data-placement="bottom" title="Log out of your account">Logout</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="nav-item"><a class="nav-link" onclickdataview-for action="Register" div="#home">Register</a></li>
+                                    <li class="nav-item"><a class="nav-link" onclickdataview-for action="LogIn" div="#home">Login</a></li>
                                 }
                             </ul>
                         </li>
-                    }
-                    @if (signInManager.IsSignedIn(User) && (await authorizationService.AuthorizeAsync(User, "ManageUsersPolicy")).Succeeded)
-                    {
-                        <li class="nav-item dropdown">
-                            <a id="dropdownMenuUsers" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Users</a>
-                            <ul class="dropdown-menu dropdown">
-                                <li><a class="dropdown-item" onclickdataview-for action="Users" route="" div="#home">All Users</a></li>
-                                @if ((await authorizationService.AuthorizeAsync(User, "CreateUserPolicy")).Succeeded)
-                                {
-                                    <li><a class="dropdown-item" onclickdataview-for action="CreateUser" route="" div="#home">Create User</a></li>
-                                }
-                            </ul>
-                        </li>
-                    }
-                    <li class="nav-item dropdown ml-auto">
-                        <a id="dropdownMenuAccount" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Account</a>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            @if (signInManager.IsSignedIn(User))
-                            {
-                                <li class="nav-item"><a class="nav-link" onclickdataview-for action="MyAccount" route="@(user.Id)" div="#home">My Account</a></li>
-                                <li class="nav-item"><a class="nav-link" onclickdataview-for action="ChangePassword" route="@(user.Id)" div="#home">Change Password</a></li>
-                                <li class="nav-item"><hr class="border-top" /></li>
-                                <li class="nav-item">
-                                    <form method="post" id="formLogOut">
-                                    </form>
-                                    <a type="submit" class="nav-link" onClickFormView-for action="LogOut" route="" div="#home" request-type="POST" form-name="formLogOut" data-toggle="tooltip" data-placement="bottom" title="Log out of your account">Logout</a>
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="nav-item"><a class="nav-link" onclickdataview-for action="Register" div="#home">Register</a></li>
-                                <li class="nav-item"><a class="nav-link" onclickdataview-for action="LogIn" div="#home">Login</a></li>
-                            }
-                        </ul>
-                    </li>
-                </ul>*@
+                    </ul>*@
             </div>
         </nav>
     </header>
@@ -125,7 +126,12 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/scripts.js" asp-append-version="true"></script>
     <script src="~/js/notify.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="~/lib/datatables/datatables.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart', 'table', 'bar'] });
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>

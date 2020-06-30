@@ -45,11 +45,11 @@ namespace Display.Pages
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> OnGetAsync(string reportID)
+        public async Task<IActionResult> OnGetAsync(string GUID)
         {
             IsAuthenticated = Authentication != null && Authentication != "Not Authenticated";
-            GetReport(reportID);
-            GetComponents(reportID);
+            GetReport(GUID);
+            GetComponents(GUID);
             if (Report.ReportMetaData.RenderNatively)
             {
                 GenerateMenuButtons();
@@ -186,10 +186,10 @@ namespace Display.Pages
         }
 
         #region OnGetTableComponentJSON
-        public JsonResult OnGetTableComponentJSON(DataTableAjaxPostModel model, string reportID)
+        public JsonResult OnGetTableComponentJSON(string GUID)
         {
             var cols = new List<DataTableAjaxColumn>();
-            Component component = GetComponent(reportID);
+            Component component = GetComponent(GUID);
             if (component is null)
             {
                 //Prob need to throw an error message here
@@ -240,17 +240,15 @@ namespace Display.Pages
             //var rows = Report.Items.Tables[0].AsEnumerable().Select(r => string.Format("[|{0}|]", string.Join("|,|", r.ItemArray)));
 
             //var output = string.Format("[{0}]", string.Join(",", rows.ToArray())).Replace('|', '"');
-            //string JSONString = JsonConvert.SerializeObject(output);
+
             return new JsonResult(new
             {
                 success = true,
                 message = "Retrieved Successfully",
-                // this is what datatables wants sending back
-                draw = model.draw,
-                recordsTotal = component.TotalItems,
-                recordsFiltered = component.TotalItems,
-                data = component.Items,
-                columns = JsonConvert.SerializeObject(cols)
+                data = JsonConvert.SerializeObject(component.Items),
+                columns = JsonConvert.SerializeObject(cols),
+                tableOptions = JsonConvert.SerializeObject(component.TableOptions),
+                chartOptions = JsonConvert.SerializeObject(component.ChartOptions)
             });
         }
         #endregion
@@ -331,7 +329,7 @@ namespace Display.Pages
             {
                 Item = new Component()
                 {
-                    ComponentID = id
+                    ComponentGUID = id
                 }
             };
             componentDTOModel = _service.GetComponent(componentDTOModel);

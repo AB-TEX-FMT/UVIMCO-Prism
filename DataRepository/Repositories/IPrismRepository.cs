@@ -42,7 +42,7 @@ namespace DataRepository
         /// <para>Returns Component</para>
         /// </summary>
         /// <returns>Component</returns>
-        Component GetComponent(Component component);
+        ComponentDTOModel GetComponent(ComponentDTOModel componentDTOModel);
         #endregion
     }
 }

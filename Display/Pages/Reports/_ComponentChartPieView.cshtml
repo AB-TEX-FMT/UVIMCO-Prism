@@ -1,0 +1,58 @@
+﻿@model ComponentMetaData
+
+<div class="container" style="margin-left: 0px; margin-right: 0px; margin-top: 0px; padding-left:0px; padding-right: 0px; width: 100%">
+    <div class="col-md-12">
+        <div class="row view-menubar-reverse">
+            <div class="col-md-2">
+                <input type="button" id="btn@Model.GUID" value="Reload" onclick="drawPieChart('@Model.GUID');" />
+            </div>
+            <div class="col-md-8">
+                <h3 class="text-center">@(Model.ComponentTitle == null ? "" : Model.ComponentTitle)</h3>
+            </div>
+            <div class="col-md-2">
+                <span id="tableBtn@Model.GUID">
+                    <a onclick="switchView('table', '@Model.GUID')" class="btn btn-primary  mb-1 has-spinner" data-toggle="tooltip" data-placement="bottom" title="Switch to table view">
+                        <i class="fa fa-table"></i>
+                    </a>
+                </span>
+                <span id="chartBtn@Model.GUID">
+                    <a onclick="switchView('chart', '@Model.GUID')" class="btn btn-primary  mb-1 has-spinner" data-toggle="tooltip" data-placement="bottom" title="Switch to chart view">
+                        <i class="fa fa-chart-pie"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="row view-component-header">
+            <div class="col-2"></div>
+            <div class="col-8 text-center">
+                @(Model.ComponentHeader is null ? "" : Model.ComponentHeader)
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row text-center" id="native">
+            <div class="col-12">
+                <!--Div that will hold the chart-->
+                <div id="chart_div_@Model.GUID" style="align-content: center;"></div>
+                <!--Div that will hold the table-->
+                <div id="table_div_@Model.GUID" style="align-content: center; display: none;"></div>
+            </div>
+        </div>
+        @if (!String.IsNullOrEmpty(Model.ComponentFootNote))
+        {
+            <div class="row view-component-footer">
+                <div class="col-2"></div>
+                <div class="col-8 text-center">
+                    @(Model.ComponentFootNote is null ? "" : Model.ComponentFootNote)
+                </div>
+                <div class="col-2"></div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawPieChart('@Model.GUID'));
+    });
+</script>

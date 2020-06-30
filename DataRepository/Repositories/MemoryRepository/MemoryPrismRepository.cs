@@ -204,11 +204,65 @@ namespace DataRepository.MemoryRepository
                     GUID = "111111-22222-33333",
                     Name = "Test Component 1",
                     Description = "Test Component 1 Description",
-                    ComponentTypeID = 1,
-                    ComponentType = "Table",
-                    ComponentTitle = "Full UVIMCO Portfolio Review - Performance",
-                    ComponentHeader = "",
-                    ComponentFootNote = "",
+                    ComponentType = ComponentMetaData.ComponentTypeValue.Table,
+                    ComponentTitle = "Table Component",
+                    ComponentHeader = "Table Component Header",
+                    ComponentFootNote = "Table Component Footer",
+
+                },
+                new ComponentMetaData()
+                {
+                    GUID = "111111-22222-44444",
+                    Name = "Pie Component",
+                    Description = "Pie Component Description",
+                    ComponentType = ComponentMetaData.ComponentTypeValue.Pie,
+                    ComponentTitle = "Pie Component Title",
+                    ComponentHeader = "Pie Component Header",
+                    ComponentFootNote = "Pie Component Footer",
+
+                },
+                new ComponentMetaData()
+                {
+                    GUID = "111111-22222-55555",
+                    Name = "Line Component",
+                    Description = "Line Component Description",
+                    ComponentType = ComponentMetaData.ComponentTypeValue.Line,
+                    ComponentTitle = "Line Component Title",
+                    ComponentHeader = "Line Component Header",
+                    ComponentFootNote = "Line Component Footer",
+
+                },
+                new ComponentMetaData()
+                {
+                    GUID = "111111-22222-666666",
+                    Name = "Bar Component",
+                    Description = "Bar Component Description",
+                    ComponentType = ComponentMetaData.ComponentTypeValue.Bar,
+                    ComponentTitle = "Bar Component Title",
+                    ComponentHeader = "Bar Component Header",
+                    ComponentFootNote = "Bar Component Footer",
+
+                },
+                new ComponentMetaData()
+                {
+                    GUID = "111111-22222-77777",
+                    Name = "Column Component",
+                    Description = "Column Component Description",
+                    ComponentType = ComponentMetaData.ComponentTypeValue.Column,
+                    ComponentTitle = "Column Component Title",
+                    ComponentHeader = "Column Component Header",
+                    ComponentFootNote = "Column Component Footer",
+
+                },
+                new ComponentMetaData()
+                {
+                    GUID = "111111-22222-88888",
+                    Name = "Area Component",
+                    Description = "Area Component Description",
+                    ComponentType = ComponentMetaData.ComponentTypeValue.Area,
+                    ComponentTitle = "Area Component Title",
+                    ComponentHeader = "Area Component Header",
+                    ComponentFootNote = "Area Component Footer",
 
                 },
         };
@@ -217,25 +271,26 @@ namespace DataRepository.MemoryRepository
         #endregion
 
         #region GetComponent
-        public Component GetComponent(Component componentDTOModel)
+        public ComponentDTOModel GetComponent(ComponentDTOModel componentDTOModel)
         {
-            switch (componentDTOModel.ComponentID)
+            Component component = componentDTOModel.Item;
+            switch (component.ComponentGUID)
             {
-                case "1":
-
-                    ComponentMetaData component = new ComponentMetaData()
+                
+                //Data table
+                case "111111-22222-33333":
+                    component.ComponentMetaData = new ComponentMetaData()
                     {
                         GUID = "111111-22222-33333",
                         Name = "Test Component 1",
                         Description = "Test Component 1 Description",
-                        ComponentTypeID = 1,
-                        ComponentType = "Table",
+                        ComponentType = ComponentMetaData.ComponentTypeValue.Table,
                         ComponentTitle = "Full UVIMCO Portfolio Review - Performance",
                         ComponentHeader = "",
                         ComponentFootNote = "",
 
                     };
-                    ColumnMetaData columns = new ColumnMetaData()
+                    component.ColumnMetaData = new ColumnMetaData()
                     {
                         AvailableColumns = new List<Column>()
                         {
@@ -759,14 +814,63 @@ namespace DataRepository.MemoryRepository
                     row["bmk_uvimco_strategy"] = null;
                     row["bmk_msci_acwi"] = null;
                     dataTable.Rows.Add(row);
-                    JArray employeeString = ConvertDataTabletoJSON(dataTable);
+                    JArray dataString = ConvertDataTabletoJSON(dataTable);
 
-                    componentDTOModel.ComponentMetaData = component;
-                    componentDTOModel.ColumnMetaData = columns;
-                    //reportDTOModel.Items = employeeString;
-                    componentDTOModel.TotalItems = 2;
+                    component.Items = dataString;
                     break;
+                case "111111-22222-44444":
+                    component.ComponentMetaData = new ComponentMetaData()
+                    {
+                        GUID = "111111-22222-44444",
+                        Name = "Pie Chart Component (111111-22222-44444)",
+                        Description = "Pie Chart Component (111111-22222-44444) Description",
+                        ComponentType = ComponentMetaData.ComponentTypeValue.Pie,
+                        ComponentTitle = "Pie Chart Sector",
+                        ComponentHeader = "Pie Chart Sector Header",
+                        ComponentFootNote = "Pie Chart Sector Footnote",
+
+                    };
+
+                    component.ColumnMetaData = new ColumnMetaData()
+                    {
+                        AvailableColumns = new List<Column>()
+                        {
+                            new Column("Sector", "eg Tech", "sector", Column.DataTypeValue.String, false, false, true),
+                            new Column("Percent", "eg 10", "percent", Column.DataTypeValue.Decimal, false, false, true),
+                         },
+                        SelectedColumns = new List<Column>()
+                        {
+                            new Column("Sector", "eg Tech", "sector", Column.DataTypeValue.String, false, false, true),
+                            new Column("Percent", "eg 10", "percent", Column.DataTypeValue.Decimal, false, false, true),
+                         },
+                    };
+
+                    dataSet = new DataSet();
+                    dataTable = new DataTable();
+                    dataTable.Columns.Add("sector", typeof(String));
+                    dataTable.Columns.Add("percent", typeof(decimal));
+                    dataTable.Rows.Add(new Object[]{"Tech", 3 });
+                    dataTable.Rows.Add(new Object[] { "Medical", 1 });
+                    dataTable.Rows.Add(new Object[] { "Aerospace", 2 });
+                    dataTable.Rows.Add(new Object[] { "Banking", 1 });
+                    dataTable.Rows.Add(new Object[] { "Misc", 2 });
+                    component.Items = ConvertDataTabletoJSON(dataTable);
+                    component.ChartOptions = new ComponentPieChartOptions()
+                    { 
+                        Title = "Holdings",
+                        Is3D = false,
+                        LegendAlignment = ComponentChartOptions.LegendAlignmentValue.Center,
+                        LegendLocation = ComponentChartOptions.LegendLocationValue.Left,
+                        LegendTextFontBold = true,
+                        LegendTextFontItalic = true,
+                        LegendTextColor = "red",
+                        PieHole = 0.4M
+                    };
+                    component.TableOptions = new ComponentTableOptions();
+                    break;
+
             }
+
             return componentDTOModel;
         }
         #endregion

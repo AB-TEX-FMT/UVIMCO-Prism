@@ -27,14 +27,9 @@ namespace DataModel.Shared
         public string Description { get; set; }
 
         /// <summary>
-        /// Holds the Components TypeID
-        /// </summary>
-        public int ComponentTypeID { get; set; }
-
-        /// <summary>
         /// Holds the Components Type
         /// </summary>
-        public string ComponentType { get; set; }
+        public ComponentTypeValue ComponentType { get; set; }
 
         /// <summary>
         /// Holds the Title of the Component
@@ -51,6 +46,6 @@ namespace DataModel.Shared
         /// </summary>
         public string ComponentFootNote { get; set; }
 
-
+        public enum ComponentTypeValue { Table, Line, Pie, Bar, Area, Column, Scatter }
     }
 }

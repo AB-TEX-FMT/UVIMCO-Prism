@@ -199,7 +199,7 @@ function loadDataView(url, divName) {
         notifyStatus(response.success, response.statusMessage);
     }).catch(function (jqxhr, status, exception) {
         console.log("error");
-        alert('loadFormView - Exception:' + exception + ' - Status: ' + status + ' -  jqxhr: ' + jqxhr);
+        alert('loadDataView - Exception:' + exception + ' - Status: ' + status + ' -  jqxhr: ' + jqxhr);
     });
 }
 
