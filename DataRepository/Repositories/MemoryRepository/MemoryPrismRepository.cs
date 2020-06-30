@@ -858,13 +858,16 @@ namespace DataRepository.MemoryRepository
                     component.ChartOptions = new ComponentPieChartOptions()
                     { 
                         Title = "Holdings",
-                        Is3D = false,
+                        Is3D = true,
                         LegendAlignment = ComponentChartOptions.LegendAlignmentValue.Center,
-                        LegendLocation = ComponentChartOptions.LegendLocationValue.Left,
+                        LegendLocation = ComponentChartOptions.LegendLocationValue.Top,
                         LegendTextFontBold = true,
                         LegendTextFontItalic = true,
                         LegendTextColor = "red",
-                        PieHole = 0.4M
+                        PieHole = 0.0M,
+                        EnableInteractivity = true,
+                        Width = 600,
+                        Height = 400
                     };
                     component.TableOptions = new ComponentTableOptions();
                     break;
